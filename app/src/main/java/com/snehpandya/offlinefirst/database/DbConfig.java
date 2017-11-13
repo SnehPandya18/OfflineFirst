@@ -7,7 +7,7 @@ package com.snehpandya.offlinefirst.database;
 public class DbConfig {
 
     public static final String DATABASE_NAME = "randomUser.db";
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
 
     public static final String TABLE_NAME = "Result";
 

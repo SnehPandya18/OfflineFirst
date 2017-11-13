@@ -21,13 +21,16 @@ public class Result {
 
     private String gender;
 
+    private String picture;
+
     private String nat;
 
-    public Result(String title, String firstName, String lastName, String gender, String nat) {
+    public Result(String title, String firstName, String lastName, String gender, String picture, String nat) {
         this.title = title;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
+        this.picture = picture;
         this.nat = nat;
     }
 
@@ -61,6 +64,14 @@ public class Result {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public String getNat() {

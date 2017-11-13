@@ -5,6 +5,7 @@ import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.LiveData;
 import android.support.annotation.NonNull;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.snehpandya.offlinefirst.database.AppDatabase;
 import com.snehpandya.offlinefirst.database.Result;
@@ -26,8 +27,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MainActivityViewModel extends AndroidViewModel {
 
-    private static final String EXCLUDE_PARAMS = "location,login,registered,phone,cell,id,email,picture,dob";
-    private static final String TAG = "TAG";
+    private static final String EXCLUDE_PARAMS = "location,login,registered,phone,cell,id,email,dob";
 
     private final LiveData<List<Result>> mListLiveData;
     private AppDatabase mAppDatabase;
@@ -40,6 +40,8 @@ public class MainActivityViewModel extends AndroidViewModel {
         mAppDatabase = AppDatabase.getInstance(this.getApplication());
 
         mListLiveData = mAppDatabase.mCommonDao().getAllUsers();
+
+        callAPI();
     }
 
     public LiveData<List<Result>> getListLiveData() {
@@ -53,6 +55,7 @@ public class MainActivityViewModel extends AndroidViewModel {
                     mResults.get(i).getName().getFirst(),
                     mResults.get(i).getName().getLast(),
                     mResults.get(i).getGender(),
+                    mResults.get(i).getPicture().getLarge(),
                     mResults.get(i).getNat());
             mAppDatabase.mCommonDao().addUser(mResult);
         }
@@ -67,6 +70,7 @@ public class MainActivityViewModel extends AndroidViewModel {
     }
 
     private void handleError(Throwable throwable) {
-        Log.d("TAG", "handleError: " + throwable);
+        Log.e("TAG", "handleError: " + throwable);
+        Toast.makeText(getApplication(), "Error!", Toast.LENGTH_SHORT).show();
     }
 }

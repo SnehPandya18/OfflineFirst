@@ -13,6 +13,7 @@ import java.util.List;
 
 public class Response {
 
+    @SerializedName("results")
     @Expose
     private List<Result> results = null;
     @SerializedName("info")

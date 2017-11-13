@@ -15,6 +15,9 @@ public class Result {
     @SerializedName("name")
     @Expose
     private Name name;
+    @SerializedName("picture")
+    @Expose
+    private Picture picture;
     @SerializedName("nat")
     @Expose
     private String nat;
@@ -33,6 +36,14 @@ public class Result {
 
     public void setName(Name name) {
         this.name = name;
+    }
+
+    public Picture getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Picture picture) {
+        this.picture = picture;
     }
 
     public String getNat() {
